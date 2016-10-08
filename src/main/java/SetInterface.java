@@ -3,7 +3,7 @@ import java.util.Set;
 /**	@elements : objects of type E
  *	@structure : linear
  *	@domain :   The elements in the set are not sorted.
- *          	All rows of elements of type E are valid values for a list.
+ *          	All rows of elements of type E are valid values for a node.
  *       		For every non-empty set the reference current is pointing to an
  *				element in the set.
  *	@constructor - Set();
@@ -54,7 +54,7 @@ public interface SetInterface<E extends Comparable> extends Cloneable{
      *         from which the method call has occurred, and the operand set.
      *         If both sets are empty then an empty set will be returned.
      */
-    Set union(Set operand);
+    List union(List operand);
 
     /**
      * @pre -
@@ -62,7 +62,7 @@ public interface SetInterface<E extends Comparable> extends Cloneable{
      *         from which the method call has occurred, and the operand set.
      *         If both sets are empty then an empty set will be returned.
      */
-    Set intersection(Set operand);
+    List intersection(List operand);
 
     /**
      * @pre -
@@ -70,7 +70,7 @@ public interface SetInterface<E extends Comparable> extends Cloneable{
      *         from which the method call has occurred, and the operand set.
      *         If both sets are empty then an empty set will be returned.
      */
-    Set complement(Set operand);
+    List complement(List operand);
 
     /**
      * @pre -
@@ -78,5 +78,5 @@ public interface SetInterface<E extends Comparable> extends Cloneable{
      *         from which the method call has occurred, and the operand set.
      *         If both sets are empty then an empty set will be returned.
      */
-    Set symmetricDifference();
+    List symmetricDifference();
 }

@@ -1,9 +1,9 @@
+
 public class Main {
 
+
     private void start() {
-        // Create a scanner on System.in
-        
-        // While there is input, read line and parse it.
+        Parser parser = new Parser("Bravo = {1, 3, 5, 7, 9, 12000067890, 13, 15, 17, 98765432100 }");
     }
 
     public static void main(String[] argv) {

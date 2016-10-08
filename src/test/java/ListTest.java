@@ -14,15 +14,15 @@ public class ListTest {
 
     @Test
     public void testIsEmpty() {
-        // Test an empty list.
+        // Test an empty node.
         List<Letter> list = new List<>();
-        assertTrue("New list should be empty", list.isEmpty());
+        assertTrue("New node should be empty", list.isEmpty());
 
         list.insert(new Letter('a'));
         assertFalse("Adding one element should return false.", list.isEmpty());
 
         list.remove();
-        assertTrue("Removing should make list empty again.", list.isEmpty());
+        assertTrue("Removing should make node empty again.", list.isEmpty());
 
         // TODO: You can add more of your own tests.
     }
@@ -31,14 +31,14 @@ public class ListTest {
     public void testInit() {
         List<Letter> list = new List<>();
 
-        // Create an empty list with init.
+        // Create an empty node with init.
         list.init();
-        assertTrue("Init on empty list should return an empty list", list.isEmpty());
+        assertTrue("Init on empty node should return an empty node", list.isEmpty());
 
         // Add item, init should still be empty.
         list.insert(new Letter('a'));
         list.init();
-        assertTrue("Init on non-empty list should return an empty list", list.isEmpty());
+        assertTrue("Init on non-empty node should return an empty node", list.isEmpty());
 
         // TODO: You can add more of your own tests.
     }
@@ -47,23 +47,23 @@ public class ListTest {
     public void testSize() {
         List<Letter> list = new List<>();
 
-        assertEquals("Empty list should be size 0", 0, list.size());
+        assertEquals("Empty node should be size 0", 0, list.size());
 
         // Insert one item
         list.insert(new Letter('a'));
         assertEquals("List of one element should have size 1", 1, list.size());
 
-        // Add 200 items to the list.
+        // Add 200 items to the node.
         for (int i = 0; i < 200; i++) {
             list.insert(new Letter('a'));
         }
-        assertEquals("Adding many elements should result in a long list", 201, list.size());
+        assertEquals("Adding many elements should result in a long node", 201, list.size());
 
         // Remove 1 item -> 200 items left
         list.remove();
         assertEquals("Removing one item should decrement the size", 200, list.size());
 
-        // Init should empty the list.
+        // Init should empty the node.
         list.init();
         assertEquals("Init should set size to zero", 0, list.size());
 
@@ -75,33 +75,33 @@ public class ListTest {
         List<Letter> list = new List<>();
 
         /* Insert first item
-         * Inserting into empty list is an edge case.
+         * Inserting into empty node is an edge case.
          */
         Letter c = new Letter('c');
         list.insert(c);
-        assertEquals("Inserted element should be in list", c, list.retrieve());
+        assertEquals("Inserted element should be in node", c, list.retrieve());
 
         // Append second item
         Letter f = new Letter('f');
         list.insert(f);
 
         list.goToLast();
-        assertEquals("Insert should order larger elements later in list", f, list.retrieve());
+        assertEquals("Insert should order larger elements later in node", f, list.retrieve());
 
         list.goToFirst();
-        assertEquals("Previous elements should still be in list", c, list.retrieve());
+        assertEquals("Previous elements should still be in node", c, list.retrieve());
 
 
-        // Insert in front of list
-        // Test that the list is sorted correctly when inserting a smaller item.
+        // Insert in front of node
+        // Test that the node is sorted correctly when inserting a smaller item.
         Letter a = new Letter('a');
         list.insert(a);
         list.goToFirst();
-        assertEquals("Insert should order smaller elements earlier in list", a, list.retrieve());
+        assertEquals("Insert should order smaller elements earlier in node", a, list.retrieve());
 
 
         // Insert at the end.
-        // Test that the list is sorted correctly when inserting a larger item.
+        // Test that the node is sorted correctly when inserting a larger item.
         Letter k = new Letter('k');
         list.insert(k);
         list.goToLast();
@@ -155,17 +155,17 @@ public class ListTest {
 
         assertEquals(c, list.retrieve());
 
-        // Remove last element in list
+        // Remove last element in node
         list.goToLast();
         list.remove();
         assertEquals(c, list.retrieve());
 
 
-        // Remove on list with size 1
+        // Remove on node with size 1
         list.remove();
         list.remove();
         try {
-            assertNull(list.retrieve()); // Inconsistent specification. Undefined behaviour for retrieve on empty list.
+            assertNull(list.retrieve()); // Inconsistent specification. Undefined behaviour for retrieve on empty node.
         } catch (NullPointerException e) {
         }
 
@@ -183,7 +183,7 @@ public class ListTest {
 
         List<Letter> list = new List<>();
 
-        // Test on empty list
+        // Test on empty node
         assertFalse(list.goToFirst());
 
         Letter a = new Letter('a');
@@ -195,7 +195,7 @@ public class ListTest {
         list.insert(c);
         list.insert(d);
 
-        // Test on list with some elements.
+        // Test on node with some elements.
         assertTrue(list.goToFirst());
 
         assertEquals(a, list.retrieve());
@@ -207,7 +207,7 @@ public class ListTest {
     public void testgoToLast() {
         List<Letter> list = new List<>();
 
-        // Test on empty list
+        // Test on empty node
         assertFalse(list.goToLast());
 
         Letter a = new Letter('a');
@@ -219,7 +219,7 @@ public class ListTest {
         list.insert(c);
         list.insert(d);
 
-        // Test on list with some elements.
+        // Test on node with some elements.
         assertTrue(list.goToLast());
         assertEquals(d, list.retrieve());
 
@@ -230,7 +230,7 @@ public class ListTest {
     public void testgoToNext() {
         List<Letter> list = new List<>();
 
-        // Test on empty list
+        // Test on empty node
         assertFalse(list.goToNext());
 
         Letter a = new Letter('a');
@@ -260,7 +260,7 @@ public class ListTest {
 
         List<Letter> list = new List<>();
 
-        // Test on empty list
+        // Test on empty node
         assertFalse(list.goToNext());
 
         Letter a = new Letter('a');
